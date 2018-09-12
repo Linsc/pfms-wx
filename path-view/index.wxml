@@ -24,7 +24,7 @@
           <view wx:for="{{item.userList}}" wx:key="{{ idx }}" wx:for-item="user"
             class="item {{ item.itemShow }}">
               <radio value="{{ user.userName }}" checked="{{ user.checked }}" 
-                data-id="{{user.userId}}" data-name="{{user.userName}}" bindtap='checkboxChange'>{{ user.userName }}</radio>
+                data-id="{{user.userId}}" data-name="{{user.userName}}" bindtap='radioChange'>{{ user.userName }}</radio>
           </view>
         </view>
       </view>

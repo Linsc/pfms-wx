@@ -103,7 +103,7 @@ Component({
         })
       }
     },
-    checkboxChange(e){
+    radioChange(e){
       var userId = e.currentTarget.dataset.id;
       var userName = e.currentTarget.dataset.name;
       var user = {};
