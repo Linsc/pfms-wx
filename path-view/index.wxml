@@ -1,0 +1,34 @@
+<scroll-view scroll-y class="i-class h-full">
+  <view class="title padder">
+    <view wx:if="{{ isRoot }}">
+      <i-icon type="homepage_fill" i-class="homepage-icon"/>
+      <text class="padder-l">{{ rootText }}</text>
+    </view>
+    <view wx:else>
+      <i-icon type="return" bindtap='backLastPath' i-class="back-icon"/>
+      <text class="padder-l">{{ current[title] }}</text>
+    </view>
+  </view>
+  <view>
+  <radio-group >
+    <view wx:for="{{ outlist }}" wx:key="{{index}}" 
+      class="padder-l-md cell-group">
+      <view class="cell">
+        <!-- <i-icon type="fullscreen" bindtap='openContent' data-index="{{ index }}"/> -->
+        <i-icon type="enter" bindtap='openContent' data-index="{{ index }}" i-class="{{ item.itemTrans }}"/>
+        <text bindtap='openContent' data-index="{{ index }}">{{ item[title] }}</text>
+        <i-icon type="enter" wx:if="{{ item[children].length > 0 }}" i-class="into-icon"
+        bindtap='intoNextPath' 
+        data-item="{{item}}" data-caninto="{{ item[children].length > 0 }}" data-index="{{ index }}"/>
+        <view class="padder-l-md padder-r-md item-group">   
+          <view wx:for="{{item.userList}}" wx:key="{{ idx }}" wx:for-item="user"
+            class="item {{ item.itemShow }}">
+              <radio value="{{ user.userName }}" checked="{{ user.checked }}" 
+                data-id="{{user.userId}}" data-name="{{user.userName}}" bindtap='checkboxChange'>{{ user.userName }}</radio>
+          </view>
+        </view>
+      </view>
+    </view>
+  </radio-group>
+  </view>
+</scroll-view>

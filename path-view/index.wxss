@@ -1,0 +1,77 @@
+.h-full{
+  height:100%
+}
+.title{
+  font-size: 36rpx;
+  font-weight: bold;
+  border-bottom: 1px solid #dddee1
+}
+.back-icon{
+  font-size:18px!important;
+  font-weight: bold;
+  color: #5cadff;
+  background: #f8f8f9;
+  border-radius: 5px;
+  border: 1px solid #e9eaec;
+  height: 18px;
+  width: 18px;
+  margin-top:-3px;
+}
+.homepage-icon{
+  font-size:20px!important;
+  font-weight: bold;
+  color: #5cadff;
+  height: 20px;
+  width: 20px;
+  margin-top: -1px;
+}
+.into-icon{
+  font-size:18px!important;
+  float: right;
+  margin-top: 4px;
+  margin-right: 8px;
+}
+.tran-icon{
+  color: #5cadff;
+}
+.padder{
+  padding: 10px;
+}
+.padder-l{
+  padding-left: 10px; 
+}
+.padder-l-sm{
+  padding-left: 5px; 
+}
+.padder-l-md{
+  padding-left: 15px; 
+}
+.padder-r-md{
+  padding-right: 15px; 
+}
+.cell-group .cell:last-child{
+  border: 0px ;
+}
+.cell{
+  padding: 10px 0;
+  border-bottom: 1px solid #e9eaec !important;
+}
+.item-group .item:last-child{
+  border: 0px !important;
+}
+.item{
+  padding: 15px 10px 15px 10px;
+  display: none;
+  border-bottom: 1px solid #f8f8f9 !important;
+}
+.item-show{
+  display: block;
+  
+}
+.item-trans90{
+  transform:rotate(90deg);
+  -ms-transform:rotate(90deg); /* Internet Explorer */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+  -o-transform:rotate(90deg); /* Opera */
+}
