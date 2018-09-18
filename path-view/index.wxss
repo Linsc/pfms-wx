@@ -49,24 +49,25 @@
 .padder-r-md{
   padding-right: 15px; 
 }
-.cell-group .cell:last-child{
-  border: 0px ;
+.cell-group{
+  border: 0px !important;
+}
+.b-t{
+  border-top: 1px solid #e9eaec!important;
 }
 .cell{
   padding: 10px 0;
-  border-bottom: 1px solid #e9eaec !important;
+  border-top: 1px solid #e9eaec;
 }
 .item-group .item:last-child{
   border: 0px !important;
 }
 .item{
   padding: 15px 10px 15px 10px;
-  display: none;
   border-bottom: 1px solid #f8f8f9 !important;
 }
 .item-show{
   display: block;
-  
 }
 .item-trans90{
   transform:rotate(90deg);

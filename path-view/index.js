@@ -5,7 +5,7 @@ Component({
       type: Array,
       value :[],
       observer() {
-        this.initView();
+        this.init();
       }
     },
     rootText:{
@@ -23,6 +23,10 @@ Component({
     content:{
       type: String,
       value: 'userList'
+    },
+    selected:{
+      type: String,
+      value: ''
     }
   },
   data:{
@@ -30,10 +34,14 @@ Component({
     path: [],
     current: {},
     isRoot: true,
-    selectList:[]
+    selected:''
   },
   methods:{
-    initView(){
+    init(){
+      this.data.selected = this.properties.selected;
+      this.toRoot();
+    },
+    toRoot(){
       this.properties.list.forEach((item)=>{
         item.itemShow='';
         item.itemTrans='';
@@ -54,19 +62,20 @@ Component({
       var index = e.currentTarget.dataset.index;
       var path = this.data.path;
       path.push(index);
+      item = this.initUser(item)
       this.setData({
         path: path,
         current: item,
         outlist: item[this.properties.children],
         isRoot: false
-      })
-      console.log('into:' + this.data.path)
+      });
+      this.scrollTop();
     },
     backLastPath(e){
       var path = this.data.path;
       var floor = path.length;
       if (floor <= 1){
-        this.initView()
+        this.toRoot()
       }else{
         path.pop();
         console.log('back:' + path)
@@ -80,6 +89,7 @@ Component({
         if (this.data.path.length <= 0){
           isRoot = true;
         }
+        item = this.initUser(item);
         this.setData({
           path: path,
           current: item,
@@ -87,6 +97,7 @@ Component({
           isRoot: isRoot
         })
       }
+      this.scrollTop();
     },
     openContent(e){
       var index = e.currentTarget.dataset.index;
@@ -106,10 +117,43 @@ Component({
     radioChange(e){
       var userId = e.currentTarget.dataset.id;
       var userName = e.currentTarget.dataset.name;
+      var index = e.currentTarget.dataset.index;
       var user = {};
       user.userId = userId;
-      user.userName = userName
+      user.userName = userName;
+      var selected = !this.data.current.userList[index].checked;
+      user.selected = selected;
+      if(selected){
+        this.setData({
+          selected: userId,
+          ['current.userList[' + index + '].checked']: selected
+        })
+      }else{
+        this.setData({
+          selected: '',
+          ['current.userList[' + index + '].checked']: selected
+        })
+      }
       this.triggerEvent('click', { value: user });
+    },
+    initUser(dept){
+      var selected = this.data.selected;
+      var userList = dept.userList;
+      userList.forEach((user) => {
+        user.checked = false;
+        if (selected == user.userId) {
+            user.checked = true;
+        }
+      })
+      return dept
+    },
+    scrollTop(){
+      setTimeout(function () {
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300
+        })
+      }.bind(this), 200)
     }
   }
 })
